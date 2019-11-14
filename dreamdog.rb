@@ -1,19 +1,14 @@
 class Breed
-    attr_accessor :active_score. :size_score, :coat_score, :ear_type
+    attr_accessor :activity_level, :ear_type, :coat_type 
     
-    def initialize (active_score, size_score, coat_score, ear_type)
-        @active_score = active_score
-        @size_score = size_score
-        @coat_score = coat_score
+    def initialize (activity_level, ear_type, coat_type)
+        @activity_level = activity_level
+        @coat_type = coat_type
         @ear_type = ear_type
     end
-
-    def active_score
-        @active_score
-    end
-
-    def size_score  
-        @
 end
 
-labrador = Breed.new()
+labrador = Breed.new("medium", "pendant", "short")
+
+p labrador.activity_level
+
