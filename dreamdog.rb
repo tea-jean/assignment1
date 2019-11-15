@@ -1,3 +1,9 @@
+require "artii"
+require "colorize"
+require "tty-prompt"
+
+prompt = TTY::Prompt.new
+
 active = ['low', 'medium', 'high']
 ears = ['droop', 'rose', 'uppy']
 coat = ['short', 'medium', 'long']
@@ -34,11 +40,12 @@ aussie_shepherd = Breed.new("Australian Shepherd", "high", "droop", "long")
 breeds = [bulldog, clumber, pekingese, whippet, akita, bernese, dalmation, husky, aussie_shepherd]
 
 puts "Welcome to your Dream Dog selector"
-puts "Please start by selecting the activity level of your ultimate dog: "
-active.each do |level|
-    puts level
-end
-activity_selection = gets.chomp
+# puts "Please start by selecting the activity level of your ultimate dog: "
+activity_selection = prompt.select("Please start by selecting the activity level of your ultimate dog: ", active)
+# active.each do |level|
+#     puts level
+# end
+#  = gets.chomp
 
 puts "How to you envision your future pups ears?"
 ears.each do |ear|
