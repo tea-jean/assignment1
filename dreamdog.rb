@@ -4,7 +4,6 @@ coat = ['short', 'medium', 'long']
 
 class Breed
     attr_accessor :name, :activity_level, :ear_type, :coat_type 
-    
     def initialize (name, activity_level, ear_type, coat_type)
         @name = name
         @activity_level = activity_level
@@ -59,17 +58,13 @@ def breed_choice (activity, ear, coat, breeds)
     breeds.each do |breed|
         is_match = breed.breed_matches(activity, ear, coat)
         if is_match 
-            return breed.name
+            return breed.name  
         end
     end
     nil
 end
 
-# when is_match = true, then puts "Dream Dog breed"
-# when is_match = false, then puts "no breed for you, but let us suggest some other breeds:" and run semi_match method
-
 dream_dog = breed_choice(activity_selection, ear_selection, coat_selection, breeds)
-puts "We suggest that your Dream Dog is a #{dream_dog}..."
 
 def semi_match(activity, coat, breeds)
     suggestions = []
@@ -84,4 +79,11 @@ end
 
 suggestions = semi_match(activity_selection, coat_selection, breeds)
 
-puts "Here's some more suggestions: " + suggestions.join(", ")
+if dream_dog == nil
+    puts "Your selections are so unique that we cannot find an exact breed match for you. But we suggest that you might be interested the following: " + suggestions.join(", ")
+else
+    puts " We suggest that your Dream Dog is a #{dream_dog}..."
+end
+
+# error handling
+# user input policing
