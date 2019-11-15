@@ -1,2 +1,9 @@
-# Assignment 1
-This is some text for my assignment
+# T1A2 - Terminal Application Assessment
+##Statement of Purpose and Scope
+
+##Features
+
+##User Interaction and Experience
+
+##Control FLow Diagram
+
