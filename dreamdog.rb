@@ -1,8 +1,12 @@
+# require_relative "terminal-app/methods"
+
 require "artii"
 require "colorize"
 require "tty-prompt"
+require_relative "methods"
 
 prompt = TTY::Prompt.new
+a = Artii::Base.new
 
 active = ['low', 'medium', 'high']
 ears = ['droop', 'rose', 'uppy']
@@ -24,7 +28,6 @@ class Breed
     def breed_suggest (activity_level, coat_type)
         activity_level == @activity_level && coat_type == @coat_type 
     end
-
 end
 
 bulldog = Breed.new("Bulldog", "low", "rose", "short")
@@ -39,25 +42,34 @@ aussie_shepherd = Breed.new("Australian Shepherd", "high", "droop", "long")
 
 breeds = [bulldog, clumber, pekingese, whippet, akita, bernese, dalmation, husky, aussie_shepherd]
 
+puts a.asciify("Dream Dog").colorize(:blue)
+
 puts "Welcome to your Dream Dog selector"
-# puts "Please start by selecting the activity level of your ultimate dog: "
+
+while true
+puts "Would you like some help to find your future bestie? (Y/N)"
+response = gets.upcase.chomp
+ 
+# puts "Would you like some help to find your future bestie? (Y/N)"
+# response = gets.chomp.upcase   
+
+if response == "Y"
+    puts "Fantastic! Let's get started..."
+    break 
+elsif response == "N"
+    puts "That's a shame, best of luck." 
+    exit 
+else
+    puts "Please enter a valid Y/N response:"
+    # then loop back to puts "would you like some help..." use a method? 
+end
+end 
+
 activity_selection = prompt.select("Please start by selecting the activity level of your ultimate dog: ", active)
-# active.each do |level|
-#     puts level
-# end
-#  = gets.chomp
 
-puts "How to you envision your future pups ears?"
-ears.each do |ear|
-    puts ear
-end
-ear_selection = gets.chomp
+ear_selection = prompt.select("How to you envision your future pups ears?", ears)
 
-puts "What type of coat do you wish your dog to have?"
-coat.each do |coat|
-    puts coat
-end
-coat_selection = gets.chomp
+coat_selection = prompt.select("What type of coat do you wish your dog to have?", coat)
 
 puts "Your Dream Dog will have a #{activity_selection} activity level. On their head are beautiful #{ear_selection} ears. Their #{coat_selection} coat is shiny and soft." 
 
@@ -87,7 +99,7 @@ end
 suggestions = semi_match(activity_selection, coat_selection, breeds)
 
 if dream_dog == nil
-    puts "Your selections are so unique that we cannot find an exact breed match for you. But we suggest that you might be interested the following: " + suggestions.join(", ")
+    puts "Your selections are so unique that we cannot find an exact breed match for you. But we suggest that you might be interested in researching a " + suggestions.join(", ") + " ?"
 else
     puts " We suggest that your Dream Dog is a #{dream_dog}..."
 end
