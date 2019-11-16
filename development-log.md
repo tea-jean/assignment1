@@ -17,3 +17,24 @@
 - testing
 - employ gems
 - README.md
+
+###16/11/19
+###Done
+- defined method to compare user input array with instances of Breed class
+- created variables to handle selections
+- wrote method to display most appropriate selection
+- wrote method to display suggested selection/s
+- created files for testing and method storage
+- employed gems: artii, tty-prompt and colorize 
+
+###Doing
+- arrange methods in separate file
+- create testing for methods
+
+###To Do
+- README.md
+- employ argv
+- employ exception handling
+- implementation plan
+- help file
+- script file
