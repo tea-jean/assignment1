@@ -33,7 +33,6 @@
 
 ###To Do
 - README.md
-- employ argv
 - employ exception handling
 - implementation plan
 - help file

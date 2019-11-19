@@ -1,4 +1,4 @@
-# require_relative "terminal-app/methods"
+require_relative "methods"
 
 require "artii"
 require "colorize"
@@ -11,24 +11,6 @@ a = Artii::Base.new
 active = ['low', 'medium', 'high']
 ears = ['droop', 'rose', 'uppy']
 coat = ['short', 'medium', 'long']
-
-class Breed
-    attr_accessor :name, :activity_level, :ear_type, :coat_type 
-    def initialize (name, activity_level, ear_type, coat_type)
-        @name = name
-        @activity_level = activity_level
-        @coat_type = coat_type
-        @ear_type = ear_type
-    end
-
-    def breed_matches (activity_level, ear_type, coat_type)
-        activity_level == @activity_level && ear_type == @ear_type && coat_type == @coat_type 
-    end
-
-    def breed_suggest (activity_level, coat_type)
-        activity_level == @activity_level && coat_type == @coat_type 
-    end
-end
 
 bulldog = Breed.new("Bulldog", "low", "rose", "short")
 clumber = Breed.new("Clumber Spaniel","low", "droop", "medium")
@@ -44,14 +26,11 @@ breeds = [bulldog, clumber, pekingese, whippet, akita, bernese, dalmation, husky
 
 puts a.asciify("Dream Dog").colorize(:blue)
 
-puts "Welcome to your Dream Dog selector"
+puts "Hi #{} Welcome to your Dream Dog selector"
 
 while true
 puts "Would you like some help to find your future bestie? (Y/N)"
-response = gets.upcase.chomp
- 
-# puts "Would you like some help to find your future bestie? (Y/N)"
-# response = gets.chomp.upcase   
+response = gets.upcase.chomp  
 
 if response == "Y"
     puts "Fantastic! Let's get started..."
@@ -61,7 +40,6 @@ elsif response == "N"
     exit 
 else
     puts "Please enter a valid Y/N response:"
-    # then loop back to puts "would you like some help..." use a method? 
 end
 end 
 
@@ -73,30 +51,16 @@ coat_selection = prompt.select("What type of coat do you wish your dog to have?"
 
 puts "Your Dream Dog will have a #{activity_selection} activity level. On their head are beautiful #{ear_selection} ears. Their #{coat_selection} coat is shiny and soft." 
 
-def breed_choice (activity, ear, coat, breeds)
-    breeds.each do |breed|
-        is_match = breed.breed_matches(activity, ear, coat)
-        if is_match 
-            return breed.name  
-        end
-    end
-    nil
-end
-
 dream_dog = breed_choice(activity_selection, ear_selection, coat_selection, breeds)
-
-def semi_match(activity, coat, breeds)
-    suggestions = []
-    breeds.each do |breed|
-        is_match = breed.breed_suggest(activity, coat)
-        if is_match 
-            suggestions << breed.name  
-        end
-    end
-    suggestions 
-end
-
 suggestions = semi_match(activity_selection, coat_selection, breeds)
+
+def outcome_file(dream_dog)
+    begin
+        File.write("your-dream-dog.txt".dream_dog)
+    rescue StandardError => exception
+        puts "Sorry, we are unable to save your Dream Dog file: #{exception}"
+    end
+end
 
 if dream_dog == nil
     puts "Your selections are so unique that we cannot find an exact breed match for you. But we suggest that you might be interested in researching a " + suggestions.join(", ") + " ?"
@@ -104,5 +68,3 @@ else
     puts " We suggest that your Dream Dog is a #{dream_dog}..."
 end
 
-# error handling
-# user input policing
