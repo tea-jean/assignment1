@@ -1,5 +1,5 @@
 # T1A2 - Terminal Application Assessment
-##Statement of Purpose and Scope
+## Statement of Purpose and Scope
 The Dream Dog terminal application was developed in order to aid future dog owners with selection of a suitable breed by matching desired canine attributes with pedigree dog breeds. 
 With so many breeds, and crosses of those breeds, choosing a suitable dog breed for an owners lifestyle can be a complex, albeit fun, research mission.
 The development of an application to match characteristics desired by an owner, to a breed which embodies such qualities can help to refine the decision making process when looking for a puppy, or even an older dog. The selection of an appropriate breed for an owners lifestyle may be important in keeping dogs in their homes long term, and avoid pressures on rescue organisations and pound facilities who take on board thousands of dogs annually who are not a good fit for their homes. 
@@ -11,9 +11,20 @@ In the case where no unique match can be sought, an alternate suggestion or bree
 Once a breed match, or a suggested alternative are printed on screen, the application terminates. 
 
 
-##Features
+## Features
+- Opt in feature
+At the launch of the application, uses are prompted to continue the application with a "Y", or exit with an input of "N". These inputs are handled by an 'if' statement which determines whether the application will continue on to the next section of code, with a "Y" input. An "N" input will put a string reply to user, and terminate the application. Where the input is not accounted for in the if statement, it is handled with an 'else', whereby all other input is met with a string prompting the user to input a valid response. 
 
-##User Interaction and Experience
+- Menu selection
+Three menu selections are presented to the user in the Dream Dog application. Through use of the tty-prompt gem, selections are limited to the displayed options, reducing the chance of erroneous input from the user. User input is assigned into variables which are utilised as outputs on screen for the user. These variables are also run through a method to be matched against instances of the class Breed, to create a breed match. 
 
-##Control FLow Diagram
+- Recommendation Engine
+To determine a breed match, Dream Dog application uses a method to loop over arrays of class instances, to compare all user inputs with predetermined arrays of attributes within class instances of 'Breed'. Where a match between arrays is true, then the output of the method is a breed name. This output is saved as a variable to be utilised outside of the method and written to a file. 
+Where the above method returns nil, then a second method is implemented. This method, semi_match, runs a similar loop to the breed_choice method. semi_match only matches with two of the user inputs, activity level and coat type. This method also pushes outputs of breed into an array of suggested breeds, which is used in a string join as an output to the user. 
+
+## User Interaction and Experience
+
+## Control Flow Diagram
+
+## Test Application
 
