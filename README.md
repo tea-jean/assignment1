@@ -32,6 +32,7 @@ Users are to enter alphanumeric input, and also navigate menu selections by way 
 The bulk of the code for Dream Dog application is written in such a way as to reduce, and hopefully eliminate, the need for error handling. Errors potentially associated with writing breed selection outcome to file are handled via the begin and rescue exceptions. 
 
 ### Control Flow Diagram
+![flowchart for Dream Dog application](https://github.com/tea-jean/assignment1/blob/master/flowchart.png)
 
 ### Test Application
 
