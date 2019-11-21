@@ -33,6 +33,3 @@ The bulk of the code for Dream Dog application is written in such a way as to re
 
 ### Control Flow Diagram
 ![flowchart for Dream Dog application](https://github.com/tea-jean/assignment1/blob/master/flowchart.png)
-
-### Test Application
-
